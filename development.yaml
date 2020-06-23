@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-svc2
+  labels:
+    app: my-app-svc2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app-svc2
+  template:
+    metadata:
+      labels:
+        app: my-app-svc2
+    spec:
+      containers:
+        - name: simple-reverse-proxy
+          image: manvigupta88/simple-reverse-proxy
+          ports:
+            - containerPort: 80
